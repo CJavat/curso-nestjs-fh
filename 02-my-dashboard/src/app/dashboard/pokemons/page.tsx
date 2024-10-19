@@ -1,5 +1,9 @@
-import { PokemonGrid, PokemonsResponse, SimplePokemon } from "@/app/pokemons";
-import Image from "next/image";
+import { SimplePokemon, PokemonsResponse, PokemonGrid } from "@/pokemons";
+
+export const metadata = {
+  title: "Pokémons",
+  description: "Lista de todos los pokemones",
+};
 
 const getPokemons = async (
   limit = 20,

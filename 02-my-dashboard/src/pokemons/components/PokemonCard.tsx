@@ -1,7 +1,7 @@
-import Link from "next/link";
-import { SimplePokemon } from "../interfaces/simple-pokemon";
 import Image from "next/image";
+import Link from "next/link";
 import { IoHeartOutline } from "react-icons/io5";
+import { SimplePokemon } from "../interfaces/simple-pokemon";
 
 interface Props {
   pokemon: SimplePokemon;
@@ -11,10 +11,11 @@ export const PokemonCard = ({ pokemon }: Props) => {
   const { id, name } = pokemon;
 
   return (
-    <div className="mx-auto right-0 mt-2 w-60">
+    <div className="mx-auto right-0 mt-2 w-60 ">
       <div className="bg-white rounded overflow-hidden shadow-lg">
         <div className="flex flex-col items-center justify-center text-center p-6 bg-gray-800 border-b">
           <Image
+            className="w-[100px] h-[100px]"
             key={id}
             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`}
             width={100}

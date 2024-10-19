@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Inicio",
+  description: "Página de inicio",
+};
+
 export default function MainPage() {
   return (
     <div>
