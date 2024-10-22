@@ -2,7 +2,6 @@
 
 import { IoCalculatorOutline } from "react-icons/io5";
 import { SimpleWidget } from "./SimpleWidget";
-import { useEffect } from "react";
 import { useAppSelector } from "@/stores";
 
 export const WidgetsGrid = () => {
