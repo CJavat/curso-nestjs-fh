@@ -1,3 +1,4 @@
 export { TodosGrid } from "./components/TodosGrid";
 export { TodoItem } from "./components/TodoItem";
 export { NewTodo } from "./components/NewTodo";
+export { TabBar } from "./components/TabBar";
