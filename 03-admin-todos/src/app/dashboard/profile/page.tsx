@@ -29,6 +29,10 @@ export default function ProfilePage() {
           {session?.user?.name ?? "No name"}
         </h2>
         <p className="text-gray-600">{session?.user?.email ?? "No email"}</p>
+        <p className="text-gray-600">
+          {session?.user?.roles?.join(",") ?? "No roles"}
+        </p>
+        <p className="text-gray-600">{session?.user?.id ?? "No UUID"}</p>
       </div>
     </div>
   );
