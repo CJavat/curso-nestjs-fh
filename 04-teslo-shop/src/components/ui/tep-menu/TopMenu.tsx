@@ -3,8 +3,8 @@
 import React from "react";
 import Link from "next/link";
 
-import { useUIStore } from "@/store";
 import { IoCartOutline, IoSendOutline } from "react-icons/io5";
+import { useUIStore } from "@/store";
 import { titleFont } from "@/config/fonts";
 
 export const TopMenu = () => {
@@ -26,19 +26,19 @@ export const TopMenu = () => {
       <div className="hidden sm:block">
         <Link
           className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
-          href="/category/men"
+          href="/gender/men"
         >
           Hombres
         </Link>
         <Link
           className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
-          href="/category/women"
+          href="/gender/women"
         >
           Mujeres
         </Link>
         <Link
           className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
-          href="/category/kid"
+          href="/gender/kid"
         >
           Niños
         </Link>

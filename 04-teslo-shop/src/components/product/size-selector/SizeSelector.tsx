@@ -1,5 +1,5 @@
-import type { Size } from "@/interfaces";
 import clsx from "clsx";
+import type { Size } from "@/interfaces";
 
 interface Props {
   selectedSize: Size;

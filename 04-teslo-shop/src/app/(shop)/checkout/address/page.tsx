@@ -1,5 +1,5 @@
-import { Title } from "@/components";
 import Link from "next/link";
+import { Title } from "@/components";
 
 export default function AdressPage() {
   return (

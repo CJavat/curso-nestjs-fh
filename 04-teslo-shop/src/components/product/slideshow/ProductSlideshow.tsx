@@ -60,7 +60,7 @@ export const ProductSlideshow = ({ images, title, className }: Props) => {
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper"
       >
-        {images.map((image, index) => (
+        {images.map((image) => (
           <SwiperSlide key={image}>
             <Image
               src={`/products/${image}`}
