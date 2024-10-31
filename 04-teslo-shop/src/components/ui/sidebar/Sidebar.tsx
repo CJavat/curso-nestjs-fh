@@ -15,7 +15,6 @@ import {
 import { logout } from "@/actions";
 import { useUIStore } from "@/store";
 import { useSession } from "next-auth/react";
-// import { Cookie } from "next/font/google";
 
 export const Sidebar = () => {
   const isSideMenuOpen = useUIStore((state) => state.isSideMenuOpen);
@@ -25,9 +24,15 @@ export const Sidebar = () => {
   const isAuthenticated = !!session?.user;
   const isAdmin = session?.user.role === "admin";
 
-  const onLogOut = () => {
-    localStorage.clear();
-    logout();
+  const onLogOut = async () => {
+    closeMenu();
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Error during logout:", error);
+    } finally {
+      window.location.replace("/");
+    }
   };
 
   return (

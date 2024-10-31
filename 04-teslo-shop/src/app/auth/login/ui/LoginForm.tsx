@@ -1,14 +1,15 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useEffect } from "react";
+import { useFormStatus } from "react-dom";
 import Link from "next/link";
-import { authenticate } from "@/actions";
-import { IoCheckmarkDoneOutline, IoInformationOutline } from "react-icons/io5";
 import clsx from "clsx";
-import { useEffect } from "react";
+import { IoCheckmarkDoneOutline, IoInformationOutline } from "react-icons/io5";
+
+import { authenticate } from "@/actions";
 
 export const LoginForm = () => {
-  const [state, dispatch] = useFormState(authenticate, undefined);
+  const [state, dispatch] = useActionState(authenticate, undefined);
 
   useEffect(() => {
     if (state === "Success") {

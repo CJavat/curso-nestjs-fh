@@ -18,6 +18,7 @@ export const authConfig: NextAuthConfig = {
       return token;
     },
     session({ session, token, user }) {
+      console.log(user);
       session.user = token.data as any;
 
       return session;
@@ -45,6 +46,7 @@ export const authConfig: NextAuthConfig = {
 
         // Regresar el usuario sin el password
         const { password: _, ...rest } = user;
+        console.log(_);
 
         return rest;
       },

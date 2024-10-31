@@ -4,8 +4,6 @@ import { notFound } from "next/navigation";
 import {
   ProductMobileSlideshow,
   ProductSlideshow,
-  QuantitySelector,
-  SizeSelector,
   StockLabel,
 } from "@/components";
 import { titleFont } from "@/config/fonts";

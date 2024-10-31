@@ -6,9 +6,7 @@ import Image from "next/image";
 import { QuantitySelector } from "@/components";
 import { useCartStore } from "@/store";
 
-interface Props {}
-
-export const ProductsInCart = ({}: Props) => {
+export const ProductsInCart = () => {
   const updateProductQuantity = useCartStore(
     (state) => state.UpdateProductQuantity
   );
@@ -44,7 +42,7 @@ export const ProductsInCart = ({}: Props) => {
               href={`/product/${product.slug}`}
               className="hover:underline cursor-pointer"
             >
-              {product.size + "-" + product.title}
+              {`${product.size}-${product.title}`}
             </Link>
             <p>${product.price}</p>
             <QuantitySelector
