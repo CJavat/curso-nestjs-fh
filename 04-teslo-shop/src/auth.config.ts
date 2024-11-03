@@ -56,7 +56,7 @@ export const authConfig: NextAuthConfig = {
             image: true,
           },
         });
-        if (userExists) return userExists;
+        if (userExists) return { ...userExists };
 
         const user = await prisma.user.create({
           data: {
@@ -112,16 +112,49 @@ export const authConfig: NextAuthConfig = {
     }),
   ],
   callbacks: {
-    jwt({ token, user }) {
-      if (user) {
-        token.data = user;
+    async jwt({ token, user, account, profile }) {
+      if (account && profile) {
+        let dbUser = await prisma.user.findUnique({
+          where: { email: profile.email! },
+        });
+
+        if (!dbUser) {
+          // Crear el usuario si no existe en la base de datos
+          dbUser = await prisma.user.create({
+            data: {
+              name: profile.name!,
+              email: profile.email!,
+              password: bcrypt.hashSync("password", 10),
+              image: profile.picture,
+            },
+          });
+        }
+
+        token.id = dbUser.id;
+        token.email = dbUser.email;
+        token.name = dbUser.name;
+        token.image = dbUser.image;
+        token.role = dbUser.role;
+      }
+
+      if (account?.provider === "credentials") {
+        token.id = user.id;
+        token.email = user.email;
+        token.name = user.name;
+        token.image = user.image;
+        token.role = user.role;
       }
 
       return token;
     },
-    session({ session, token, user }) {
-      console.log(user);
-      session.user = token.data as any;
+    async session({ session, token }) {
+      session.user = {
+        id: token.id,
+        email: token.email,
+        name: token.name,
+        image: token.image,
+        role: token.role,
+      } as any;
 
       return session;
     },

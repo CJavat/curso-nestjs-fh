@@ -93,10 +93,12 @@ export const LoginForm = () => {
         </button>
       </div>
 
-      <Link href="/auth/new-account" className="my-2 btn-secondary text-center">
-        ¿No tienes una cuenta?,{" "}
-        <span className="text-blue-500"> Crear una nueva cuenta</span>
-      </Link>
+      <div className="my-2 text-center">
+        <p className="mb-2">¿No tienes una cuenta?</p>
+        <Link href="/auth/new-account" className="btn-secondary">
+          <span className="text-blue-500">Crear una nueva</span>
+        </Link>
+      </div>
     </form>
   );
 };
