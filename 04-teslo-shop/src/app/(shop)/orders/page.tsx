@@ -60,7 +60,7 @@ export default async function OrdersPage() {
                   {order.isPaid ? (
                     <>
                       <IoCardOutline className="text-green-800" />
-                      <span className="mx-2 text-green-800">No Pagada</span>
+                      <span className="mx-2 text-green-800">Pagada</span>
                     </>
                   ) : (
                     <>
