@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "Productos",
+  description:
+    "Revisa todos nuestros productos y realiza tu compra lo antes posible",
+};
+
 export default function ProductsPage() {
   return (
     <div>

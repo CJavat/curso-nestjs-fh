@@ -10,6 +10,12 @@ interface Props {
   }>;
 }
 
+export const metadata = {
+  title: "Inicio",
+  description:
+    "Teslo Shop es la mejor tienda de ropa que puedes encontrar en este universo, anímate a comprar con nosotros y te aseguramos que no te vas a arrepentir.",
+};
+
 export default async function Home({ searchParams }: Props) {
   const page = (await searchParams).page
     ? parseInt((await searchParams).page ?? "")

@@ -3,6 +3,12 @@ import { Title } from "@/components";
 import { ProductsInCart } from "./ui/ProductsInCart";
 import { OrderSumary } from "./ui/OrderSumary";
 
+export const metadata = {
+  title: "Carrito",
+  description:
+    "Página del carrito, para que los usuarios puedan hacer modificaciones antes de realizar su compra",
+};
+
 export default function CartPage() {
   return (
     <div className="flex justify-center items-center mb-72 px-10 sm:px-0">

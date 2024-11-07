@@ -4,11 +4,38 @@ import { OrderStatus, PayPalButton, Title } from "@/components";
 
 import { getOrderById } from "@/actions";
 import { currencyFormatted } from "../../../../utils/currencyFormatter";
+import { Metadata, ResolvingMetadata } from "next";
 
 interface Props {
   params: Promise<{
     id: string;
   }>;
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  console.log(parent);
+
+  // read route params
+  const slug = (await params).id;
+
+  // fetch data
+  const { order } = await getOrderById(slug);
+
+  return {
+    title: order?.id ?? "Orden no encontrada",
+    description:
+      "Detalles de tu orden, puedes revisar el status, nombre, costo y más cosas",
+
+    openGraph: {
+      title: order?.id ?? "Orden no encontrada",
+      description:
+        "Detalles de tu orden, puedes revisar el status, nombre, costo y más cosas",
+      images: [`/teslo-shop-logo.png`],
+    },
+  };
 }
 
 export default async function OrderPage({ params }: Props) {

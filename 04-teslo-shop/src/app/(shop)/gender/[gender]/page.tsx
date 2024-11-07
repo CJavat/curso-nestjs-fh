@@ -5,12 +5,41 @@ import { Pagination, ProductGrid, Title } from "@/components";
 import { getPaginatedProductsWithImages } from "@/actions";
 
 import type { Gender } from "@prisma/client";
+import { Metadata, ResolvingMetadata } from "next";
 
 interface Props {
   params: Promise<{ gender: string }>;
   searchParams: Promise<{
     page?: string;
   }>;
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  console.log(parent);
+
+  // read route params
+  const gender = (await params).gender;
+
+  const labels: Record<string, string> = {
+    men: "Hombres",
+    women: "Mujeres",
+    kid: "Niños",
+    unisex: "Todos",
+  };
+
+  return {
+    title: `Categoría: ${labels[gender]}`,
+    description: `Mira todos nuestros productos de ${gender} y agrega al carrito los artículos que más te gusten`,
+
+    openGraph: {
+      title: `${gender}`,
+      description: `Mira todos nuestros productos de ${gender} y agrega al carrito los artículos que más te gusten`,
+      images: [`/teslo-shop-logo.png`],
+    },
+  };
 }
 
 export default async function GenderPage({ params, searchParams }: Props) {

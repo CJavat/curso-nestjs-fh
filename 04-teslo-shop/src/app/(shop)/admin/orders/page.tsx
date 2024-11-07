@@ -3,21 +3,22 @@ export const revalidate = 0;
 import Link from "next/link";
 import { Title } from "@/components";
 import { IoCardOutline } from "react-icons/io5";
-import { getOrdersByUser } from "@/actions";
+import { getPaginatedOrders } from "@/actions";
 import { redirect } from "next/navigation";
 
 export const metadata = {
-  title: "Ordenes",
-  description: "Ve todas las ordenes que has realizado en la tienda",
+  title: "Ordenes (Admin)",
+  description:
+    "Administración de las ordenes, página solo válida para administradores",
 };
 
-export default async function OrdersPage() {
-  const { ok, orders = [] } = await getOrdersByUser();
+export default async function AdminOrdersPage() {
+  const { ok, orders = [] } = await getPaginatedOrders();
   if (!ok) redirect("/auth/login");
 
   return (
     <>
-      <Title title="Orders" />
+      <Title title="Todas Las Orders" />
 
       <div className="mb-10">
         <table className="min-w-full">

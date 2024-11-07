@@ -3,6 +3,11 @@ import { AddressForm } from "./ui/AddressForm";
 import { getCountries, getUserAddress } from "@/actions";
 import { auth } from "@/auth.config";
 
+export const metadata = {
+  title: "Checkout Address",
+  description: "Agrega tu dirección de envío",
+};
+
 export default async function AdressPage() {
   const countries = await getCountries();
   const session = await auth();
