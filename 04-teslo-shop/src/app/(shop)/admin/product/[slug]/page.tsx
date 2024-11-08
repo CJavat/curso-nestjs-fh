@@ -1,4 +1,4 @@
-import { getProductBySlug } from "@/actions";
+import { getCategories, getProductBySlug } from "@/actions";
 import { Title } from "@/components";
 import { redirect } from "next/navigation";
 import { ProductForm } from "./ui/ProductForm";
@@ -37,10 +37,12 @@ export async function generateMetadata(
 export default async function ProductSlugPage({ params }: Props) {
   const { slug } = await params;
 
-  const product = await getProductBySlug(slug);
+  const [product, categories] = await Promise.all([
+    getProductBySlug(slug),
+    getCategories(),
+  ]);
 
-  //TODO: new-product
-  if (!product) redirect("/admin/products");
+  if (!product && slug !== "new") redirect("/admin/products");
 
   const title = slug === "new" ? "Nuevo Producto" : "Editar Producto";
 
@@ -48,7 +50,7 @@ export default async function ProductSlugPage({ params }: Props) {
     <>
       <Title title={title} />
 
-      <ProductForm product={product} />
+      <ProductForm product={product ?? {}} categories={categories} />
     </>
   );
 }

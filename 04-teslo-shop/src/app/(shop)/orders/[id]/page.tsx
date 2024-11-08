@@ -42,7 +42,7 @@ export default async function OrderPage({ params }: Props) {
   const { id } = await params;
 
   //* Server Action
-  const { ok, message, order } = await getOrderById(id);
+  const { ok, order } = await getOrderById(id);
   if (!ok) redirect("/");
 
   return (

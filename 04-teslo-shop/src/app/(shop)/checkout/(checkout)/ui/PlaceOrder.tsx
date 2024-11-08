@@ -7,7 +7,6 @@ import { currencyFormatted } from "@/utils";
 import { useAddressStore, useCartStore } from "@/store";
 import { placeOrder } from "@/actions";
 import { useRouter } from "next/navigation";
-import { set } from "zod";
 
 interface SumaryInformation {
   tax: number;

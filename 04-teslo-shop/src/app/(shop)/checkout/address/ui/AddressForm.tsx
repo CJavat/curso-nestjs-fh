@@ -32,7 +32,7 @@ export const AddressForm = ({ countries, userStoreAddress = {} }: Props) => {
   const {
     handleSubmit,
     register,
-    formState: { isValid, errors },
+    formState: { isValid },
     reset,
   } = useForm<FormInputs>({
     defaultValues: {
@@ -49,6 +49,12 @@ export const AddressForm = ({ countries, userStoreAddress = {} }: Props) => {
   const setAddress = useAddressStore((state) => state.setAddress);
   const address = useAddressStore((state) => state.address);
 
+  useEffect(() => {
+    if (address.firstName) {
+      reset(address);
+    }
+  }, [address.firstName]);
+
   const onSubmit = async (data: FormInputs) => {
     const { rememberAddress, ...restAddress } = data;
     setAddress(restAddress);
@@ -62,12 +68,6 @@ export const AddressForm = ({ countries, userStoreAddress = {} }: Props) => {
 
     router.push("/checkout");
   };
-
-  useEffect(() => {
-    if (address.firstName) {
-      reset(address);
-    }
-  }, [address.firstName]);
 
   return (
     <form

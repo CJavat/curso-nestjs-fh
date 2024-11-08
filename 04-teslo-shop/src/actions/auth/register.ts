@@ -28,11 +28,10 @@ export const registerUser = async (
       message: "Usuario Creado",
     };
   } catch (error) {
-    // console.log(error);
-
     return {
       ok: false,
       message: "No se pudo crear el usuario",
+      error: error,
     };
   }
 };
