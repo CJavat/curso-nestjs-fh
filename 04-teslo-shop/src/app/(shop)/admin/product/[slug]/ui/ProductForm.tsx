@@ -36,21 +36,15 @@ interface FormInputs {
 export const ProductForm = ({ product, categories }: Props) => {
   const router = useRouter();
 
-  const {
-    handleSubmit,
-    register,
-    getValues,
-    setValue,
-    watch,
-    formState: { isValid },
-  } = useForm<FormInputs>({
-    defaultValues: {
-      ...product,
-      tags: product.tags?.join(", "),
-      sizes: product.sizes ?? [],
-      images: undefined,
-    },
-  });
+  const { handleSubmit, register, getValues, setValue, watch } =
+    useForm<FormInputs>({
+      defaultValues: {
+        ...product,
+        tags: product.tags?.join(", "),
+        sizes: product.sizes ?? [],
+        images: undefined,
+      },
+    });
 
   watch("sizes");
 

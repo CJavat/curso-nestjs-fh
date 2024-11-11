@@ -47,7 +47,7 @@ export const PlaceOrder = () => {
     if (loaded && cart.length === 0) {
       router.replace("/empty");
     }
-  }, [cart, loaded]);
+  }, [cart, loaded, router]);
 
   const onPlaceOrder = async () => {
     setIsPlacingOrder(true);
